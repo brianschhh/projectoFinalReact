@@ -22,29 +22,16 @@ class Cart {
     return total
   }
 
-  productCounter(){
-    let totalAmount = 0
-  
-    this.products.forEach(product => {
-      
-      totalAmount = totalAmount + parseInt(product.amount) ;
-      console.log(totalAmount)
-
-    })
-
-    return totalAmount
-      
-  }
   
 }
 
 class Product {
-  constructor(id, name, price, image, amount) {
+  constructor(id, name, price, image, ) {
     this.id = id
     this.name = name
     this.price = price
     this.image = image
-    this.amount = amount;
+    
   }
 }
 
@@ -58,7 +45,7 @@ products.forEach(product => {
   const image = product.querySelector('.image').getAttribute('src')
   const price = product.querySelector('.price').innerText
   const id = product.querySelector('.id').getAttribute('value')
-  const amount = product.querySelector('.amount').innerText
+  
 
   
   
@@ -68,7 +55,7 @@ products.forEach(product => {
   button.addEventListener('click', () => {
     const displayCart = document.getElementById('cart')
 
-    const product = new Product(id, name, price, image, amount)
+    const product = new Product(id, name, price, image, )
     cart.addProduct(product)
   
 
@@ -76,7 +63,7 @@ products.forEach(product => {
     const totalPriceText = document.querySelector('.total-price')
     totalPriceText.innerText = totalPrice
 
-    const amountTotal = cart.productCounter(product)
+    
 
     // crear bloque html
     const articleContainer = document.createElement('article')
@@ -85,13 +72,13 @@ products.forEach(product => {
     const nameContainer = document.createElement('h2')
     const priceContainer = document.createElement('h3')
     const deleteButton = document.createElement('span')
-    const amountContainer = document.createElement('h4')
+
 
     nameContainer.innerText = name
     priceContainer.innerText = '$' + price
     imgContainer.src = image
     deleteButton.innerText = 'x'
-    amountContainer.innerText = 'x' + amountTotal
+    
 
     const productList = document.querySelector('.products-list')
 
@@ -101,7 +88,7 @@ products.forEach(product => {
     dataContainer.appendChild(priceContainer)
     dataContainer.appendChild(deleteButton)
     productList.appendChild(articleContainer)
-    dataContainer.appendChild(amountContainer)
+    
    
 
     const buttonAllDelete = document.querySelector('.buttonDeleteAll')
